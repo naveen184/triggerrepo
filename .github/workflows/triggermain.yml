@@ -1,0 +1,16 @@
+name: Tag PAT Work
+ 
+on:
+  push:
+    tags:
+      - tag-pat/work/*
+ 
+jobs:
+  work:
+    name: Some Work
+    runs-on: ubuntu-latest
+    env:
+      tag: ${GITHUB_REF#refs/tags/tag-pat/work/}
+    steps:
+      - run: echo "Some PAT work"
+      - run: echo "Tag ${{ env.tag }}"
